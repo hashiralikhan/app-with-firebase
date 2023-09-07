@@ -1,6 +1,8 @@
+import 'package:apptodo/pages/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Add extends StatefulWidget {
   const Add({super.key});
@@ -30,7 +32,11 @@ class _AddState extends State<Add> {
     'Timestamp':time,
 
   });
+  Fluttertoast.showToast(msg: 'Data added successfully');
   // here you write the codes to input the data into firestore
+  Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) {
+          return  const Home();}));
 }
 
   @override

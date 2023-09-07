@@ -1,4 +1,5 @@
 import 'package:apptodo/pages/home.dart';
+import 'package:apptodo/pages/sign_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -52,7 +53,7 @@ class _LoginState extends State<Login> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 185, 187, 189),
+              Color.fromARGB(255, 110, 184, 62),
               Color.fromARGB(255, 181, 184, 187),
             ],
           ),
@@ -96,7 +97,7 @@ class _LoginState extends State<Login> {
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Colors.white),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: Color.fromARGB(255, 216, 52, 52)),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
@@ -109,13 +110,37 @@ class _LoginState extends State<Login> {
                   onPressed: _signIn,
                   child: const Text('Log in'),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: const Color.fromARGB(255, 49, 49, 51), backgroundColor: Colors.white,
+                    foregroundColor: Color.fromARGB(190, 22, 16, 16), backgroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ),
+                 const SizedBox(height: 10.0),
+                 Row(
+                  children: [
+                    const Padding(
+                   padding: EdgeInsets.only(left:30.0),
+                   child: Text('Not have an account?'),
+                 ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignUp()),
+                  );
+                },
+                
+                child: const Text(
+                  ' Sign up',
+                  style: TextStyle(color: Color.fromARGB(255, 214, 114, 114),fontWeight: FontWeight.bold,fontSize: 18),
+                ),
+              ),
+
+                  ],
+                 )
+                 
               ],
             ),
           ),

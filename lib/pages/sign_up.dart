@@ -3,6 +3,7 @@ import 'package:apptodo/pages/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -43,63 +44,98 @@ TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
- appBar: AppBar(
-        title: const Text('Sign Up'),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        
-        child: Container(
-         // color: const Color.fromARGB(255, 161, 161, 161),
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const Text(
-                'Create an Account',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 110, 184, 62),
+              Color.fromARGB(255, 181, 184, 187),
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Create Account!',
+                  style: GoogleFonts.poppins(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              const SizedBox(height: 20.0),
-              TextFormField(
-                controller: usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Full Name',
-                  border: OutlineInputBorder(),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: usernameController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
+                    labelText: 'User-name',
+                    labelStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20.0),
-              TextFormField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: emailController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
                 ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              const SizedBox(height: 20.0),
-              TextFormField(
-                controller: passwordController,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
+                const SizedBox(height: 12),
+                TextFormField(
+                  controller: passwordController,
+                  style:const TextStyle(color: Colors.white),
+                  decoration:const InputDecoration(
+                    labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color.fromARGB(255, 216, 52, 52)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                  obscureText: true,
                 ),
-                obscureText: true,
-              ),
-              const SizedBox(height: 30.0),
-              ElevatedButton(
-                onPressed: buttonregister,
-                child: const Text('Sign Up'),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  primary: const Color.fromARGB(255, 6, 27, 44),
-                  textStyle: const TextStyle(fontSize: 18.0),
+               const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: buttonregister,
+                  child: const Text('Sign up'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Color.fromARGB(190, 22, 16, 16), backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10.0),
+                 const SizedBox(height: 10.0),
+                 Row(
+                  children: [
+                    const Padding(
+                   padding: EdgeInsets.only(left:30.0),
+                   child: Text('Already have an account?'),
+                 ),
               TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -107,12 +143,18 @@ TextEditingController emailController = TextEditingController();
                     MaterialPageRoute(builder: (context) => const Login()),
                   );
                 },
+                
                 child: const Text(
-                  'Already have an account? Log in',
-                  style: TextStyle(color: Colors.grey),
+                  ' Log in',
+                  style: TextStyle(color: Color.fromARGB(255, 214, 114, 114),fontWeight: FontWeight.bold,fontSize: 18),
                 ),
               ),
-            ],
+
+                  ],
+                 )
+                 
+              ],
+            ),
           ),
         ),
       ),
